@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Di que si</title>
+    <title>Di que sí</title>
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!--Encabezado-->
     <header>
-        <div>
+        <div class="encabezado">
 
         </div>
     </header>
@@ -16,11 +20,11 @@
     <!--Cuerpo-->
     <main>
         <div class="contenedor-padre">
-            <div class="animations">
+            <div class="contenedor-animations">
     
             </div>
             <div class="contenedor-botones">
-                <button onclick="funcionSi();" class="boton" id="btnSi">Si</button>
+                <button onclick="funcionSi();" class="boton" id="btnSi">Sí</button>
                 <button onclick="funcionNo();" class="boton" id="btnNo">No</button>
             </div>
         </div>
@@ -28,5 +32,8 @@
 
     <!--Pie de pagina-->
     <footer></footer>
+
+    <!--Conexión entre el archivo app.js con index.html-->
+    <script src="app.js" defer></script>
 </body>
 </html>
