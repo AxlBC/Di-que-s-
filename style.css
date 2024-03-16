@@ -4,7 +4,7 @@ body {
 
 .encabezado {
     width: 100%;
-    height: 10em;
+    height: 5em;
 }
 
 .contenedor-padre {
@@ -14,7 +14,7 @@ body {
 }
 
 .contenedor-animations {
-    height: 10em;
+    height: 6em;
 }
 
 .contenedor-botones {
@@ -27,7 +27,7 @@ body {
     font-weight: bold;
     width: 10%;
     border-radius: 5px;
-    margin: 0 10px;
+    margin: 10px;
     padding: 10px 0;
     transition: 500ms;
 }
