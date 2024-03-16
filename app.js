@@ -30,6 +30,19 @@ function funcionNo() {
     let btnSi = document.getElementById('btnSi');
     let btnNo = document.getElementById('btnNo');
 
+    const contenedor = btnSi.offsetParent;
+    
+
+
+
+
+
+
+
+
+
+
+
     if (btnSi.offsetWidth < 1280) {
         siAltura = btnSi.offsetHeight;
         siAnchura = btnSi.offsetWidth;
@@ -41,6 +54,7 @@ function funcionNo() {
         noAnchura = btnNo.offsetWidth;
 
         console.log(noAltura);
+        console.log(noAnchura);
 
         if (noAltura > 20) {
             btnNo.style.height = (noAltura * 0.9) + "px";
