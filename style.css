@@ -29,4 +29,9 @@ body {
     border-radius: 5px;
     margin: 0 10px;
     padding: 10px 0;
+    transition: 500ms;
+}
+
+.boton:hover {
+    transform: scale(1.1);
 }
