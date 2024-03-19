@@ -48,3 +48,8 @@ function funcionNo() {
         }
     }
 }
+
+// Botón Sí
+function funcionSi() {
+    
+}
