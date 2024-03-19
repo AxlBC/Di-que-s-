@@ -11,10 +11,10 @@ let btnSi = document.getElementById('btnSi');
 let btnNo = document.getElementById('btnNo');
 const contenedor = document.getElementById('contenedorBotones');
 
+
 // Botón Sí
 function funcionSi() {
-    let btnSi = document.getElementById('btnSi');
-    let btnNo = document.getElementById('btnNo');
+    
 }
 
 
@@ -43,6 +43,8 @@ function funcionNo() {
     }
 }
 
+
+// Movimiento del botón
 function movimientoRandom() {
     console.log('Ahi estas');
     let min = 150;
