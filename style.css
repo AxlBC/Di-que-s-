@@ -4,22 +4,46 @@ body {
 
 .encabezado {
     width: 100%;
-    height: 5em;
+    height: 10vh;
+}
+
+main {
+    height: 80vh;
+    width: 100%;
+    margin: auto;
 }
 
 .contenedor-padre {
-    width: 80%;
+    position: relative;
+    width: 90%;
+    height: 100%;
     margin: auto;
     text-align: center;
 }
 
 .contenedor-animations {
-    height: 6em;
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.gif {
+    height: 80%;
+}
+
+p {
+    height: 20%;
+    font-size: 2.5em;
 }
 
 .contenedor-botones {
-    padding: 20px;
-    border-color: aqua;
+    position: relative;
+    width: 100%;
+    height: 70%;
 }
 
 .boton {
@@ -33,5 +57,11 @@ body {
 }
 
 .boton:hover {
-    transform: scale(1.1);
+    /*transform: scale(1.5);*/
+}
+
+@media screen and (max-width:480px) {
+    .boton {
+        width: 30%;
+    }
 }

@@ -1,6 +1,6 @@
 // Variables
 let contador = 0;
-const no = new Audio('resources/Pou-diciendo-no.mp3');
+const no = new Audio('resources/sounds/Pou-diciendo-no.mp3');
 
 // Medidas botón sí
 let siAnchura = 0;
@@ -11,14 +11,17 @@ let noAltura = 0;
 let noAnchura = 0;
 
 // Obtenemos todas las propiedades de los botones y el contenedor
-let btnSi = document.getElementById('btnSi');
-let btnNo = document.getElementById('btnNo');
+const btnSi = document.getElementById('btnSi');
+const btnNo = document.getElementById('btnNo');
 const contenedor = document.getElementById('contenedorBotones');
+
+// Obtenemos la imagen
+let img = document.getElementById('gif');
 
 
 // Botón Sí
 function funcionSi() {
-    
+    img.src = "resources/gifs/gato-happy.gif";
 }
 
 
@@ -26,7 +29,8 @@ function funcionSi() {
 function funcionNo() {
     let intento = 0;
 
-    if (contador < 7) {
+    cambiarImagen(contador);
+    if (contador < 3) {
         no.play();
         contador++;
         console.log(contador);
@@ -35,45 +39,56 @@ function funcionNo() {
 
         if (tieneClickEvent) {
             btnNo.removeEventListener('click', funcionNo);
-            btnNo.addEventListener('mouseover', movimientoRandom);
+            btnNo.addEventListener('click', movimientoRandom);
         }      
     }
-
-
-    // Agrandamos el boton Si hasta alcanzar el 90% de espacio del div
-    /*
-    if (btnSi.offsetWidth < (contenedor.offsetWidth * 0.90)) {
-        siAltura = btnSi.offsetHeight;
-        siAnchura = btnSi.offsetWidth;
-
-        btnSi.style.height = (siAltura * 1.08) + 'px';
-        btnSi.style.width = (siAnchura * 1.1) + 'px';
-    } 
-    // Lo ajustamos al 100% si sobrepasamos el 90% del espacio
-    else {
-        btnSi.style.width = '100%';
-        console.log(btnSi.offsetWidth);
-
-        if (btnSi.offsetWidth > (contenedor.offsetWidth * 0.92)) {
-            btnNo.removeEventListener('click', funcionNo);
-            btnNo.addEventListener('mouseover', movimientoRandom);
-
-            //btnNo.addEventListener('mouseover', movimientoRandom());
-            console.log('LLego hasta aqui')
-        }
-    }
-    */
 }
 
 
 // Movimiento del botón
 function movimientoRandom() {
     console.log('Ahi estas');
-    let min = 150;
+
     btnNo.style.position = 'absolute';
-    btnNo.style.left = (Math.random() * (window.screen.width - min)) + 'px';
-    btnNo.style.top = (Math.random() * (window.screen.height - min)) + 'px';
+
+    const maxX = contenedor.clientWidth;
+    const maxY = contenedor.clientHeight;
+
+    console.log(`width: ${maxX}, height: ${maxY}`);
+
+    let randomX = Math.floor(Math.random() * maxX);
+    let randomY = Math.floor(Math.random() * maxY);
+
+    console.log(`widthBtn: ${randomX}, heightBtn: ${randomY}`);
+
+    if (randomX > maxX * 0.85) {
+        randomX -= randomX * 0.15;
+        btnNo.style.left = (randomX - (randomX * 0.15)) + 'px';
+    } else {
+        btnNo.style.left = randomX + 'px';
+    }
+    
+    btnNo.style.top = randomY + 'px';
+
+    /*
+    let min = 50;
+
+    btnNo.style.left = (Math.random() * (window.screen.width - min)) + min + 'px';
+    btnNo.style.top = (Math.random() * (window.screen.height - min)) + min + 'px';
+    */
 
     no.play();
     console.log('se activa');
+
+}
+
+
+function cambiarImagen(contador) {
+    if (contador < 3) {
+        img.src = "resources/gifs/gato-crying.gif";
+        img.alt = "imagen-2";
+    } else {
+        img.src = "resources/gifs/gato-angry.gif";
+        img.alt = "imagen-3";
+    }
 }
