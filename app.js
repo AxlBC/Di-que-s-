@@ -1,5 +1,6 @@
 // Variables
 let contador = 0;
+const imagenes = ['resources/gifs/gato-angry.gif', 'resources/gifs/gato-corazones.gif', 'resources/gifs/gato-crying.gif', 'resources/gifs/gato-dance.gif', 'resources/gifs/gato-happy.gif'];
 const no = new Audio('resources/sounds/Pou-diciendo-no.mp3');
 
 // Medidas botón sí
@@ -15,80 +16,59 @@ const btnSi = document.getElementById('btnSi');
 const btnNo = document.getElementById('btnNo');
 const contenedor = document.getElementById('contenedorBotones');
 
-// Obtenemos la imagen
+// Obtenemos la imagen 
 let img = document.getElementById('gif');
+
+
+//console.log(`contenedorWidth: ${contenedor.clientWidth}, contenedorHeight: ${contenedor.clientHeight}`);
+
+
 
 
 // Botón Sí
 function funcionSi() {
-    img.src = "resources/gifs/gato-happy.gif";
+    img.src = imagenes[4];
 }
 
 
 // Botón No
 function funcionNo() {
-    let intento = 0;
+    console.log(contador + 1);
+    no.play();
 
-    cambiarImagen(contador);
-    if (contador < 3) {
-        no.play();
-        contador++;
-        console.log(contador);
+    if (contador < 2) {
+        cambiarImagen(imagenes[2]);
     } else {
-        const tieneClickEvent = btnNo.onclick !== null;
-
-        if (tieneClickEvent) {
-            btnNo.removeEventListener('click', funcionNo);
-            btnNo.addEventListener('click', movimientoRandom);
-        }      
+        if (btnNo.position !== 'absolute') {
+            btnNo.style.position = 'absolute';
+        }
+        const posiciones = movimientoRandom();
+        //console.log(`posicionX: ${posiciones[0]}, posicionY: ${}`)
+        btnNo.style.left = posiciones[0] + 'px';
+        btnNo.style.top = posiciones[1] + 'px';
     }
+    contador++;
 }
 
 
 // Movimiento del botón
 function movimientoRandom() {
-    console.log('Ahi estas');
-
-    btnNo.style.position = 'absolute';
-
-    const maxX = contenedor.clientWidth;
-    const maxY = contenedor.clientHeight;
-
-    console.log(`width: ${maxX}, height: ${maxY}`);
+    const maxX = contenedor.clientWidth - btnNo.clientWidth;
+    const maxY = contenedor.clientHeight - btnNo.clientHeight;
 
     let randomX = Math.floor(Math.random() * maxX);
     let randomY = Math.floor(Math.random() * maxY);
 
-    console.log(`widthBtn: ${randomX}, heightBtn: ${randomY}`);
-
-    if (randomX > maxX * 0.85) {
-        randomX -= randomX * 0.15;
-        btnNo.style.left = (randomX - (randomX * 0.15)) + 'px';
-    } else {
-        btnNo.style.left = randomX + 'px';
-    }
-    
-    btnNo.style.top = randomY + 'px';
-
-    /*
-    let min = 50;
-
-    btnNo.style.left = (Math.random() * (window.screen.width - min)) + min + 'px';
-    btnNo.style.top = (Math.random() * (window.screen.height - min)) + min + 'px';
-    */
-
-    no.play();
-    console.log('se activa');
-
+    return [randomX, randomY];
 }
 
 
 function cambiarImagen(contador) {
     if (contador < 3) {
-        img.src = "resources/gifs/gato-crying.gif";
+        img.src = imagenes[2];
         img.alt = "imagen-2";
     } else {
-        img.src = "resources/gifs/gato-angry.gif";
+        img.src = imagenes[0];
         img.alt = "imagen-3";
     }
 }
