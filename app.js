@@ -2,6 +2,7 @@
 let contador = 0;
 const imagenes = ['resources/gifs/gato-angry.gif', 'resources/gifs/gato-corazones.gif', 'resources/gifs/gato-crying.gif', 'resources/gifs/gato-dance.gif', 'resources/gifs/gato-happy.gif'];
 const no = new Audio('resources/sounds/Pou-diciendo-no.mp3');
+const yepi = new Audio('resources/sounds/Yippee-Sound2.mp3');
 
 // Medidas botón sí
 let siAnchura = 0;
@@ -27,7 +28,8 @@ let img = document.getElementById('gif');
 
 // Botón Sí
 function funcionSi() {
-    img.src = imagenes[4];
+    img.src = imagenes[3];
+    yepi.play();
 }
 
 
@@ -63,12 +65,6 @@ function movimientoRandom() {
 }
 
 
-function cambiarImagen(contador) {
-    if (contador < 3) {
-        img.src = imagenes[2];
-        img.alt = "imagen-2";
-    } else {
-        img.src = imagenes[0];
-        img.alt = "imagen-3";
-    }
+function cambiarImagen(source) {
+    img.src = source;
 }
